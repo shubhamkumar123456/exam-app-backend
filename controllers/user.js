@@ -55,8 +55,14 @@ const getSingle = async(req,res)=>{
     res.json({msg:"fetched successfully",success:true,user})
 }
 
+const getAllusers = async(req,res)=>{
+    let users = await User.find({}).populate({path:'Exam'})
+    res.status(200).json({msg:"users fetched successfully",success:true,users})
+}
+
 module.exports = {
     createUser: createUser,
     loginUSer: loginUSer,
-    getSingle
+    getSingle,
+    getAllusers
 }

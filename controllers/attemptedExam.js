@@ -131,10 +131,23 @@ const getAllAttemptedExam = async(req,res)=>{
 
 }
 
+const getSinglePaper = async(req,res)=>{
+    const user = req.params._userId
+    const exam = req.params._examId
+   try {
+    let attemptExam =await Attempt.findOne({exam:exam,user:user}) 
+    console.log(attemptExam)
+    return res.status(200).json({msg:"fetched successfully",result:attemptExam,success:true})
+   } catch (error) {
+    return res.status(500).json({msg:"error in getting exam",success:false,error:error})
+   }
+}
+
 
 module.exports = {
     attempted,
     getSignleAllAttemptedExam,
     addQuestions,
-    getAllAttemptedExam
+    getAllAttemptedExam,
+    getSinglePaper
 }
