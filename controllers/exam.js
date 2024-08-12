@@ -68,7 +68,8 @@ const getAllexam = async(req,res)=>{
 
 const toggleExamEnable =async(req,res)=>{
   let examId = req.params.examId;
-  let exam = await Exam.findByIdAndUpdate(examId,{$set:{enable:!enable}},{new:true});
+  let enable=req.body.enable;
+  let exam = await Exam.findByIdAndUpdate(examId,{$set:{enable:enable}},{new:true});
   res.json({msg:"exam switched succeffully",exam})
   
 }
