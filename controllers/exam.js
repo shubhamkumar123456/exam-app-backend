@@ -66,10 +66,18 @@ const getAllexam = async(req,res)=>{
     return res.status(200).json({msg:"fetched all exam successfully",exam,success:true})
 }
 
+const toggleExamEnable =async(req,res)=>{
+  let examId = req.params.examId;
+  let exam = await Exam.findByIdAndUpdate(examId,{$set:{enable:!enable}},{new:true});
+  res.json({msg:"exam switched succeffully",exam})
+  
+}
+
 
 module.exports ={
     createExam,
     AddQuestion,
     getAllexam,
-    getSingleExam
+    getSingleExam,
+    toggleExamEnable
 }

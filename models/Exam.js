@@ -17,6 +17,10 @@ const ExamSchema = new mongoose.Schema({
             type:String,
             default:"Mix",
             enum:["Fullstack","Frontend","Backend","ReactJs","ExpressJs","NodeJs","MongoDb","Html","Css","Js","Mix"]
+        },
+        enable:{
+            type:"boolean",
+            default:true,
         }
 },{timestamps:true})
 module.exports = mongoose.model('Exam',ExamSchema)
